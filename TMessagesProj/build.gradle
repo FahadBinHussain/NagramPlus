@@ -195,10 +195,16 @@ android {
 
     signingConfigs {
         release {
-            storeFile project.file("release.keystore")
-            storePassword keystorePwd
-            keyAlias alias
-            keyPassword pwd
+            storeFile file("/home/fahad/Downloads/NagramPlus.jks")
+            storePassword "N39J&FVsMEloFB"
+            keyAlias "release"
+            keyPassword "N39J&FVsMEloFB"
+        }
+        debug {
+            storeFile file("/home/fahad/Downloads/NagramPlus.jks")
+            storePassword "N39J&FVsMEloFB"
+            keyAlias "release"
+            keyPassword "N39J&FVsMEloFB"
         }
     }
 

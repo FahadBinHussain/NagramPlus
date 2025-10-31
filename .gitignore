@@ -1,27 +1,60 @@
-*.aar
-*.iml
-*.so
-.cxx
-.externalNativeBuild
+# =========================
+# Android / Gradle
+# =========================
 .gradle/
-.idea/
-.vscode/
 build/
 local.properties
-sentry.properties
-obj/
-service_account_credentials.json
+*.iml
+.idea/
+.vscode/
+
+# =========================
+# NDK / C++ build artifacts
+# =========================
+**/.cxx/
+**/obj/
+**/jniLibs/
+**/jniRes/
+**/afat/
+*.so
+*.h
+*.c
+*.o
+*.a
+*.out
+
+# =========================
+# Android artifacts
+# =========================
+*.apk
+*.ap_
+*.aar
+*.dex
+*.class
+
+# =========================
+# macOS / OS-specific
+# =========================
+.DS_Store
+
+# =========================
+# Python (if using any scripts/venv)
+# =========================
 __pycache__/
-release/
+*.pyc
+*.pyo
+*.pyd
 venv/
 .venv/
 
-TMessagesProj/.cxx/
-TMessagesProj/jniLibs/
-TMessagesProj/jniRes/
-**/.DS_Store
-TMessagesProj/afat/
-TMessagesProj_App/afat/
-TMessagesProj_AppHockeyApp/afat/
-TMessagesProj_AppStandalone/afat/
-TMessagesProj_AppHuawei/afat/
+# =========================
+# Firebase / Sentry / Service accounts
+# =========================
+sentry.properties
+service_account_credentials.json
+
+# =========================
+# Keystore (sensitive)
+# =========================
+*.jks
+*.keystore

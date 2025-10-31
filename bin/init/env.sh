@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Detect ANDROID_HOME if not set
 if [ -z "$ANDROID_HOME" ]; then
   if [ -d "$HOME/Android/Sdk" ]; then
     export ANDROID_HOME="$HOME/Android/Sdk"
@@ -8,22 +9,26 @@ if [ -z "$ANDROID_HOME" ]; then
   fi
 fi
 
+# Force Linux NDK r27d first
+if [ -z "$ANDROID_NDK_HOME" ]; then
+  export ANDROID_NDK_HOME="$HOME/android-ndk/android-ndk-r27d"
+fi
 
-_NDK="$ANDROID_HOME/ndk/21.4.7075529"
-[ -f "$_NDK/source.properties" ] || _NDK="$ANDROID_NDK_HOME"
-[ -f "$_NDK/source.properties" ] || _NDK="$NDK"
-[ -f "$_NDK/source.properties" ] || _NDK="$ANDROID_HOME/ndk-bundle"
+if [ -z "$NDK" ]; then
+  export NDK="$ANDROID_NDK_HOME"
+fi
 
-if [ ! -f "$_NDK/source.properties" ]; then
-  echo "Error: NDK not found."
+# Check NDK exists
+if [ ! -f "$NDK/source.properties" ]; then
+  echo "Error: NDK not found at $NDK"
   exit 1
 fi
 
-export ANDROID_NDK_HOME=$_NDK
-export NDK=$_NDK
+# Export PROJECT path
 export PROJECT=$(realpath .)
 
-if [ ! $(command -v go) ]; then
+# Go environment setup (optional, only if needed)
+if ! command -v go &> /dev/null; then
   if [ -d /usr/lib/go-1.16 ]; then
     export PATH=$PATH:/usr/lib/go-1.16/bin
   elif [ -d $HOME/.go ]; then
@@ -31,6 +36,10 @@ if [ ! $(command -v go) ]; then
   fi
 fi
 
-if [ $(command -v go) ]; then
+if command -v go &> /dev/null; then
   export PATH=$PATH:$(go env GOPATH)/bin
 fi
+
+echo "ANDROID_HOME=$ANDROID_HOME"
+echo "NDK=$NDK"
+echo "ANDROID_NDK_HOME=$ANDROID_NDK_HOME"
