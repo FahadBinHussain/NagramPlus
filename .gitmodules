@@ -1,12 +1,14 @@
 [submodule "TMessagesProj/jni/boringssl"]
-	path = TMessagesProj/jni/boringssl
-	url = https://github.com/google/boringssl
-	ignore = dirty
+    path = TMessagesProj/jni/boringssl
+    url = https://mirror.ghproxy.cc/https://github.com/google/boringssl
+    ignore = dirty
+
 [submodule "TMessagesProj/jni/libvpx"]
-	path = TMessagesProj/jni/libvpx
-	url = https://github.com/webmproject/libvpx
-	ignore = dirty
+    path = TMessagesProj/jni/libvpx
+    url = https://mirror.ghproxy.cc/https://github.com/webmproject/libvpx
+    ignore = dirty
+
 [submodule "TMessagesProj/jni/ffmpeg"]
-	path = TMessagesProj/jni/ffmpeg
-	url = https://github.com/FFmpeg/FFmpeg
-	ignore = dirty
+    path = TMessagesProj/jni/ffmpeg
+    url = https://mirror.ghproxy.cc/https://github.com/FFmpeg/FFmpeg
+    ignore = dirty
